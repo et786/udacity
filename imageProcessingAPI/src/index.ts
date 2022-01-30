@@ -1,3 +1,7 @@
+/*
+ * Express server configuration
+ */ 
+
 import express from 'express';
 import routes from './routes/index';
 
