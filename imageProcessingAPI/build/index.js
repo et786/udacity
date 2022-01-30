@@ -10,6 +10,6 @@ var express_1 = __importDefault(require("express"));
 var index_1 = __importDefault(require("./routes/index"));
 var app = (0, express_1.default)();
 var port = 7861;
-app.use('/', index_1.default);
+app.use("/", index_1.default);
 // Start Express server
 app.listen(port);
