@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Image processing API project for Udacity's FSJS course.",
   "main": "index.js",
+
   "scripts": {
     "test": "npm run build && npm run jasmine",
     "lint": "eslint './src/index.ts'",
