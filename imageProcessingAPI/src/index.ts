@@ -14,7 +14,6 @@ app.use('/', routes);
 app.use('/api/images', routes);
 
 // Static assets
-app.use('/public/assets/static/full', express.static('tgr.png'));
 
 // Start Express server
 app.listen(port);
