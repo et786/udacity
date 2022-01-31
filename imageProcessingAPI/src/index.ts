@@ -1,13 +1,19 @@
 /*
  * Express server configuration
- */
+ */ 
 
-import express from "express";
-import routes from "./routes/index";
+import express from 'express';
+import routes from './routes/index';
 
 const app = express();
 const port = 7861;
 
-app.use("/", routes);
+// Routes
+app.use('/', routes);
+app.use('/api/images', routes);
+
+
 // Start Express server
 app.listen(port);
+
+export default app;

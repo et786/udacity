@@ -3,10 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = __importDefault(require("fs"));
 const processor_1 = __importDefault(require("../utilities/processor"));
 const { createResizedImage } = require('../utilities/processor');
-// Validation of file types
 describe("Validate file type of selected image", () => {
     const jpgImageURI = 'example.jpg';
     const pngImageURI = 'example.png';
@@ -24,11 +22,14 @@ describe("Validate file type of selected image", () => {
         expect(type).toEqual('Unknown type');
     });
 });
+/*
 describe("Resize selected image", () => {
-    const imageURI = "public/assets/full/me.jpg";
-    const cachedImageURI = "public/assets/thumb/me.jpg";
-    it("should write resized image file to public/assets/thumb", async () => {
-        await processor_1.default.createResizedImage(imageURI, 200, 200);
-        expect(fs_1.default.existsSync(cachedImageURI)).toBeTruthy();
-    });
+  const imageURI = "public/assets/full/me.jpg";
+  const cachedImageURI = "public/assets/thumb/me.jpg";
+
+  it("expect resized image file to exist in public/assets/thumb", async () => {
+    await processor.createResizedImage(imageURI, 200, 200);
+    expect(fs.existsSync(cachedImageURI)).toBeTruthy();
+  });
 });
+*/

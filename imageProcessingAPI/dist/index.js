@@ -10,6 +10,9 @@ const express_1 = __importDefault(require("express"));
 const index_1 = __importDefault(require("./routes/index"));
 const app = (0, express_1.default)();
 const port = 7861;
-app.use("/", index_1.default);
+// Routes
+app.use('/', index_1.default);
+app.use('/api/images', index_1.default);
 // Start Express server
 app.listen(port);
+exports.default = app;

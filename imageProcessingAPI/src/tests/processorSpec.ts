@@ -25,7 +25,7 @@ describe("Validate file type of selected image", () => {
 });
 
 
-
+/*
 describe("Resize selected image", () => {
   const imageURI = "public/assets/full/me.jpg";
   const cachedImageURI = "public/assets/thumb/me.jpg";
@@ -35,6 +35,7 @@ describe("Resize selected image", () => {
     expect(fs.existsSync(cachedImageURI)).toBeTruthy();
   });
 });
+*/
 
 
 
