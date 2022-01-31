@@ -13,6 +13,9 @@ const port = 7861;
 // Routes
 app.use('/', index_1.default);
 app.use('/api/images', index_1.default);
+// Static assets
+app.use(express_1.default.static('public'));
+app.use(express_1.default.static('src/routes/api/images'));
 // Start Express server
 app.listen(port);
 exports.default = app;
