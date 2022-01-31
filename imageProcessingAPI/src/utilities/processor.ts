@@ -1,6 +1,9 @@
 import sharp from "sharp";
+import fs from 'fs';
 
-// Determines if the image is of type JPG or PNG 
+
+
+// Determines if the given image file is of type JPG or PNG 
 function imageType(uri: string) {
     const filePattern = /\.(jpg|png)/i;
 
@@ -15,29 +18,38 @@ function imageType(uri: string) {
     }
 }
 
-// Retrieves image specified by name from public/assets/images
-async function resizeImage(uri: string) {
 
-    let resizedImage;
-    let imgType = imageType(uri);
+
+// Retrieves image specified by name from public/assets/images
+async function createResizedImage(name: string, newWidth: number, newHeight: number) {
+
+    let image;
+    let imgType = imageType(name);
 
     if (imgType != 'Unknown type') {
-        // JPG image
-        if (imgType === 'jpg') {
-            
         // PNG image
+        if (imgType === 'png') {
+            image = sharp(name)
+            .png()
+            .resize(newWidth, newHeight)
+            .toFile(`public/assets/thumb/${name}`)
+        // JPG image
         } else {
-            
-        }
-    } else {
-        return 
-    }
 
- 
+        }
+    } 
+
+    try {
+        const resizedImage = await image;  
+        return resizedImage;  
+    } catch (error) {
+        console.log(error);
+    }
+   
 }
 
 
 export default {
     imageType,
-    resizeImage
+    createResizedImage
 };
