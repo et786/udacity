@@ -16,8 +16,13 @@ describe("Endpoint testing", () => {
         const response = await request.get('/api/images');
         expect(response.status).toBe(200);  
     });
+/*
+    it("expect to find image by specified URL params in browser", async () => {
+        const filename = 'tcr.png';
+        const response = await request.get(`/api/images/${filename}`);
+        expect(response.status).toBe(200);
+    });
 
-
-
+*/
 
 });

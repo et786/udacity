@@ -14,6 +14,7 @@ app.use('/', routes);
 app.use('/api/images', routes);
 
 // Static assets
+app.use(express.static(`${__dirname}/src`));
 
 // Start Express server
 app.listen(port);

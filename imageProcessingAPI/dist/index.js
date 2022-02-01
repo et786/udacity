@@ -14,7 +14,7 @@ const port = 7861;
 app.use('/', index_1.default);
 app.use('/api/images', index_1.default);
 // Static assets
-// app.use('/public/assets/static/full', express.static('image.png'));
+app.use(express_1.default.static(`${__dirname}/src`));
 // Start Express server
 app.listen(port);
 exports.default = app;

@@ -20,24 +20,28 @@ function imageType(uri) {
     }
 }
 // Retrieves image specified by name from public/assets/images
-async function createResizedImage(name, newWidth, newHeight) {
+async function resize(filename, width, height) {
     let image;
-    let imgType = imageType(name);
-    if (imgType != 'Unknown type') {
-        // PNG image
-        if (imgType === 'png') {
-            image = (0, sharp_1.default)(name)
-                .png()
-                .resize(newWidth, newHeight)
-                .toFile(`public/assets/thumb/${name}`);
-            // JPG image
-        }
-        else {
-        }
-    }
+    let imgType = imageType(filename);
     try {
-        const resizedImage = await image;
-        return resizedImage;
+        if (imgType != 'Unknown type') {
+            // PNG image
+            if (imgType === 'png') {
+                const result = await (0, sharp_1.default)(filename)
+                    .png()
+                    .resize(width, height)
+                    .toFile(`../src/api/output_files/${filename}`);
+                return result;
+                // JPG image (default)
+            }
+            else {
+                const result = await (0, sharp_1.default)(filename)
+                    .jpeg()
+                    .resize(width, height)
+                    .toFile(`../src/api/output_files/${filename}`);
+                return result;
+            }
+        }
     }
     catch (error) {
         console.log(error);
@@ -45,5 +49,5 @@ async function createResizedImage(name, newWidth, newHeight) {
 }
 exports.default = {
     imageType,
-    createResizedImage
+    resize
 };

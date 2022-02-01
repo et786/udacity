@@ -1,0 +1,126 @@
+[33mcommit 8f0a8a7cf333d3078fb8fd5deeb21d8657334d70[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Sat Jan 29 23:38:25 2022 -0700
+
+    Further building file structure
+
+[33mcommit e660f482632b853f7a3e2750eacb57566f80c1bd[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Sat Jan 29 23:11:54 2022 -0700
+
+    Installed initial dependencies for imageProcessingAPI.
+
+[33mcommit 96d613bb0685bbc49b9a1a463982b03c26e42cb2[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Fri Jan 28 17:06:37 2022 -0700
+
+    starting lesson 5: building a server with express
+
+[33mcommit f031e3281d651b0e984beff300e45543614efc73[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Fri Jan 28 17:03:29 2022 -0700
+
+    studying async jasmine testing and finishing the remaining exercises
+
+[33mcommit 0749bb36e51caf12c8cd6bc6e2b8ea9208887d2f[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Fri Jan 28 16:40:48 2022 -0700
+
+    successfully implementing passing tests in udacity console
+
+[33mcommit 9cc59ac9f9b260adaa8b41864c41aebb590a4439[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Thu Jan 27 23:15:48 2022 -0700
+
+    setting up file structures for a basic jasmine test
+
+[33mcommit 8eac9b5c7834661a9befa0067bde795c8503d6e9[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Thu Jan 27 22:54:53 2022 -0700
+
+    resolved 'node ./build' script issue
+
+[33mcommit cfe735f5bce491be112eec2bea11d353614970f0[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Thu Jan 27 22:42:57 2022 -0700
+
+    jasmine testing
+
+[33mcommit 3bea7a4c93b71df1b276eefa826b8b7f6465bb34[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Thu Jan 27 21:35:26 2022 -0700
+
+    convert to typescript proj. 2
+
+[33mcommit 18e6fe205747ad3c7808788870a02acf0f2034e4[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Wed Jan 26 15:11:22 2022 -0700
+
+    studying async typescript
+
+[33mcommit b8f73ed8b7946cb81037518bc6477a3ddd603926[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Tue Jan 25 21:07:06 2022 -0700
+
+    implementing typescript
+
+[33mcommit 1f381c46f0d8a82a8c42bbd24ee616d781357e1e[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Tue Jan 25 20:39:44 2022 -0700
+
+    installed node_modules & setting up typescript
+
+[33mcommit 0fdcbcaae34d5c86516bde127a7c9cfedbaf6b31[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Tue Jan 25 20:30:13 2022 -0700
+
+    typescript project
+
+[33mcommit 9168a3221b88d69bd6ce7a6f14c209f8dbaba24f[m
+Merge: 45d491d a236987
+Author: ahmed-t-syed <Ahmed>
+Date:   Tue Jan 25 20:27:27 2022 -0700
+
+    starting lesson 3
+
+[33mcommit 45d491d763886b93f81c842a177d07fe450d4b85[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Tue Jan 25 20:25:11 2022 -0700
+
+    starting lesson 3
+
+[33mcommit a2369876bbc82d6db6802e9d0e4429e767af3430[m
+Author: et786 <ahmedtsyed@gmail.com>
+Date:   Tue Jan 25 20:15:44 2022 -0700
+
+    Delete lesson2.8 directory
+
+[33mcommit 9b91116ecc3e612fe99a1bd48eadfa5d058489d1[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Tue Jan 25 20:12:26 2022 -0700
+
+    finished npm project exercise
+
+[33mcommit 1fe8c50e6c9b55bf7e6aa47bc37fafef98c9afb5[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Mon Jan 24 20:47:19 2022 -0700
+
+    working on npm project
+
+[33mcommit bc349e227f12f2f95bcc2a3b26b41d1ad45c0faf[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Mon Jan 24 20:33:43 2022 -0700
+
+    working on lesson 2
+
+[33mcommit b7856c894160367ff651cc35b850532d9ca67e3b[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Mon Jan 24 18:45:02 2022 -0700
+
+    pushed repo
+
+[33mcommit 54c1b94622e76af497937a2961637cde6fd56689[m
+Author: ahmed-t-syed <Ahmed>
+Date:   Mon Jan 24 14:36:55 2022 -0700
+
+    1st commit
