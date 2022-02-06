@@ -3,7 +3,9 @@ import fs from 'fs';
 
 
 
+// Determines if the given i
 // Determines if the given image file is of type JPG or PNG 
+/*
 function imageType(uri: string) {
     const filePattern = /\.(jpg|png)/i;
 
@@ -16,35 +18,16 @@ function imageType(uri: string) {
     } else {
         return 'Unknown type';
     }
-}
+}*/
 
 
 
 // Retrieves image specified by name from public/assets/images
 async function resize(filename: string, width: number, height: number) {
 
-    let image;
-    let imgType = imageType(filename);
-
     try {
-        if (imgType != 'Unknown type') {
-            // PNG image
-            if (imgType === 'png') {
-                const result = await sharp(filename)
-                .png()
-                .resize(width, height)
-                .toFile(`../src/api/output_files/${filename}`);
-                return result;
-
-            // JPG image (default)
-            } else {
-                const result = await sharp(filename)
-                .jpeg()
-                .resize(width, height)
-                .toFile(`../src/api/output_files/${filename}`);
-                return result;
-            }
-        } 
+        const result = await sharp(filename).jpeg().resize(width, height);
+        return result;
     } catch (error) {
         console.log(error);
     }
@@ -53,6 +36,5 @@ async function resize(filename: string, width: number, height: number) {
 
 
 export default {
-    imageType,
     resize
 };
