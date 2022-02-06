@@ -1,39 +1,18 @@
 import fs from 'fs';
 import processor from '../utilities/processor';
-/*
-describe("Validate file type of selected image", () => {
-  const jpgImageURI = 'example.jpg';
-  const pngImageURI = 'example.png';
-  const unrecognizedURI = 'example.gif'; 
-  
-  it("recognizes JPG", () => {
-    const type = processor.imageType(jpgImageURI);
-    expect(type).toEqual('jpg');
-  });
 
-  it("recognizes PNG", () => {
-    const type = processor.imageType(pngImageURI);
-    expect(type).toEqual('png');
-  });
 
-  it("rejects whatever isn't JPG or PNG", () => {
-    const type = processor.imageType(unrecognizedURI);
-    expect(type).toEqual('Unknown type');
-  });
-
-});
-*/
-/*
-
-describe("Resize image", () => {
-  it("expect to have resized image written in output_files, according to specified filename, width and height params", async () => {
-    const filename = 'tcr.png';
-    await processor.resize(filename, 150, 150);
-    expect(fs.existsSync('src/routes/api/output_files/tcr.png')).toBeTruthy();
+describe("Resized image", () => {
+  it("expect to be found in ./public/thumb directory", async () => {
+    const filename = 'tcr';
+    const width = 200;
+    const height = 300;
+    await processor.resize(filename, width, height);
+    expect(fs.existsSync(`./public/thumb/${filename}${width}x${height}.jpg`)).toBeTruthy();
   });
 });
 
-*/
+
 
 
 

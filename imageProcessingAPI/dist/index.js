@@ -12,7 +12,7 @@ const app = (0, express_1.default)();
 const port = 7861;
 // Routes
 app.use('/', index_1.default);
-app.use('/api/images', index_1.default);
+app.use('/api/images/', index_1.default);
 app.set('view engine', 'ejs');
 // Static assets
 app.use(express_1.default.static('public'));

@@ -11,7 +11,7 @@ routes.get('/', (req, res) => {
     res.send('/');
 });
 // Resizing endpoint
-routes.get("/api/images", async (req, res) => {
+routes.get("/api/images/", async (req, res) => {
     // Parameters to retrieve from URL in the form '?filename.[extension]=[filename]&width=[width]&height=[height]'
     const filename = String(req.query.filename);
     const width = Number(req.query.width);
