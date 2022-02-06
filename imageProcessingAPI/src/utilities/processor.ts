@@ -3,7 +3,7 @@ import fs from 'fs';
 
 // Retrieves image specified by name from public/assets/images
 const resize = async (filename: string, width: number, height: number): Promise<void> => {
-    const thumbPath = `./public/thumb/${filename}${width}x${height}`;
+    const thumbPath = `./public/thumb/${filename}${width}x${height}.jpg`;
 
     // Original PNG asset
     const pngAsset = await sharp(`assets/full/${filename}.png`);
@@ -12,7 +12,7 @@ const resize = async (filename: string, width: number, height: number): Promise<
     const resizedJpeg = await pngAsset.jpeg().resize(width, height);
 
     resizedJpeg.toFile(thumbPath);
-    
+
 }
 
 

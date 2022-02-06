@@ -11,7 +11,7 @@ const port = 7861;
 
 // Routes
 app.use('/', routes);
-app.use('/api/images', routes);
+app.use('/api/images/', routes);
 app.set('view engine', 'ejs');
 
 // Static assets
