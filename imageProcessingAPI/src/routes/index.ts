@@ -1,8 +1,6 @@
 import express, { response } from "express";
-import { resolve } from "path/posix";
 import processor from "../utilities/processor";
 import fs from "fs";
-import sharp from "sharp";
 
 const routes = express.Router();
 
@@ -12,32 +10,56 @@ routes.get("/", (req: express.Request, res: express.Response): void => {
   res.send("/");
 });
 
+
 // Resizing endpoint
 routes.get("/api/images/", async (req: express.Request, res: express.Response): Promise<void> => {
-  // Parameters to retrieve from URL in the form '?filename.[extension]=[filename]&width=[width]&height=[height]'
+  /*
+  * Reviewer: "You must check if the image resized with the same parameters exist 
+  * and if it does, return that image as a response instead of resizing."
+  */
 
+  /* 
+  * Parameters to retrieve from URL in the form 
+  * '?filename.[extension]=[filename]&width=[width]&height=[height]'
+  */
   const filename = String(req.query.filename);
   const width = Number(req.query.width);
   const height = Number(req.query.height);
-  const assetExists = fs.existsSync(`assets/full/${filename}.png`);
 
-  if (assetExists) { // File must exist
+  // Specify asset location and thumb location and check for existence of the asset and/or the thumbnail  
+  const jpegThumb = `/thumb/${filename}${width}x${height}.jpg`;
+  const pngAsset = `assets/full/${filename}.png`;
+  const assetExists = fs.existsSync(pngAsset);
+  const thumbExists = fs.existsSync(`public/${jpegThumb}`);
 
-    if (width > 0 && height > 0) { // Both width and height must be positive integers
-        try {
-            // Wait for void Promise to resolve or reject
-            await processor.resize(filename, width, height);
 
-            const thumb = `/thumb/${filename}${width}x${height}.jpg`;
-            
-            // Response passes resized image to view 'resizedImage.ejs'
-            res.status(200).render("resizedImage", { src: thumb });
-        } catch (error) {
-            throw error;
-        }
-        
+
+  if (thumbExists) { 
+    if (width > 0 && height > 0) {
+      // Serve stored thumbnail if image specified by filename, width and height already exists in thumb directory
+      
+      console.log(jpegThumb, " has been loaded");
+      res.status(200).render("resizedImage", { src: jpegThumb });
     } else {
-        res.status(403).send("Width and height of resized image must be positive integers.");
+      res.status(403).send("Width and height of resized image must be positive integers.");
+    }
+  } else if (assetExists) {
+    if (width > 0 && height > 0) { // Both width and height must be positive integers
+
+      // Resize pngAsset according to specified query params 'height' and 'width' and convert it to PNG
+      try {
+          // Wait for void Promise to resolve or reject
+          await processor.resize(filename, width, height);
+
+          console.log('PNG image', pngAsset, 'has been resized and converted into a JPEG image in ', jpegThumb);
+          // Response passes resized image to view 'resizedImage.ejs'
+          res.status(200).render("resizedImage", { src: jpegThumb });
+      } catch (error) {
+          throw error;
+      }
+      
+    } else {
+      res.status(403).send("Width and height of resized image must be positive integers.");
     }
   } else {
       res.status(404).send("File not found.");

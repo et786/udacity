@@ -14,7 +14,7 @@ starting: npm start
 
 Root: '/'
 
-Resized image: '/api/images/?filename=tcr&width=[positive integer]&hieght=[positive integer]'
+Resized image: '/api/images/?filename=tcr&width=[positive integer]&height=[positive integer]'
 
 
 # Additional functionality
