@@ -7,12 +7,13 @@ import sharp from "sharp";
 const routes = express.Router();
 
 // Root endpoint
-routes.get("/", (req, res) => {
+routes.get("/", (req: express.Request, res: express.Response): void => {
+  // Return type is void and not Promise<void> because this function is not async
   res.send("/");
 });
 
 // Resizing endpoint
-routes.get("/api/images/", async (req, res) => {
+routes.get("/api/images/", async (req: express.Request, res: express.Response): Promise<void> => {
   // Parameters to retrieve from URL in the form '?filename.[extension]=[filename]&width=[width]&height=[height]'
 
   const filename = String(req.query.filename);
@@ -20,8 +21,9 @@ routes.get("/api/images/", async (req, res) => {
   const height = Number(req.query.height);
   const assetExists = fs.existsSync(`assets/full/${filename}.png`);
 
-  if (assetExists) { 
-    if (width > 0 && height > 0) { // both width and height must be positive integers
+  if (assetExists) { // File must exist
+
+    if (width > 0 && height > 0) { // Both width and height must be positive integers
         try {
             // Wait for void Promise to resolve or reject
             await processor.resize(filename, width, height);
@@ -40,7 +42,6 @@ routes.get("/api/images/", async (req, res) => {
   } else {
       res.status(404).send("File not found.");
   }
-  //const resizedImage = await processor.resize(filename, width, height);
 });
 
 export default routes;
