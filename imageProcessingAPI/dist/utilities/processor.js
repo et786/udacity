@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sharp_1 = __importDefault(require("sharp"));
-// Retrieves image specified by name from public/assets/images
+// Retrieves PNG image specified by name from public/assets/images, and then converts it to a resized JPEG image
 const resize = async (filename, width, height) => {
     const thumbPath = `./public/thumb/${filename}${width}x${height}.jpg`;
     // Original PNG asset

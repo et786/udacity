@@ -1,7 +1,7 @@
 import sharp, { OutputInfo } from "sharp";
 import fs from 'fs';
 
-// Retrieves image specified by name from public/assets/images
+// Retrieves PNG image specified by name from public/assets/images, and then converts it to a resized JPEG image
 const resize = async (filename: string, width: number, height: number): Promise<void> => {
     const thumbPath = `./public/thumb/${filename}${width}x${height}.jpg`;
 
@@ -14,7 +14,6 @@ const resize = async (filename: string, width: number, height: number): Promise<
     resizedJpeg.toFile(thumbPath);
 
 }
-
 
 
 export default {
