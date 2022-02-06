@@ -10,8 +10,8 @@ const routes = express_1.default.Router();
 routes.get('/', (req, res) => {
     res.send('/');
 });
-// 
-routes.get("/api/images/", async (req, res) => {
+// Resizing endpoint
+routes.get("/api/images", async (req, res) => {
     // Parameters to retrieve from URL in the form '?filename.[extension]=[filename]&width=[width]&height=[height]'
     const filename = String(req.query.filename);
     const width = Number(req.query.width);
@@ -19,8 +19,7 @@ routes.get("/api/images/", async (req, res) => {
     try {
         await processor_1.default.resize(filename, width, height);
         const thumb = `/thumb/${filename}${width}x${height}.jpg`;
-        res.writeHead(200, { 'Content-Type': 'images/jpeg' });
-        res.render("resizedImage", {
+        res.status(200).render("resizedImage", {
             src: thumb
         });
     }
