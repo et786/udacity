@@ -1,38 +1,20 @@
 import sharp, { OutputInfo } from "sharp";
 import fs from 'fs';
 
-
-
-// Determines if the given i
-// Determines if the given image file is of type JPG or PNG 
-/*
-function imageType(uri: string) {
-    const filePattern = /\.(jpg|png)/i;
-
-    if (filePattern.test(uri)){
-         if ((/\.jpg/i).test(uri)) {
-            return 'jpg';
-         } else if ((/\.png/i).test(uri)) {
-            return 'png';
-         }
-    } else {
-        return 'Unknown type';
-    }
-}*/
-
-
-
 // Retrieves image specified by name from public/assets/images
-async function resize(filename: string, width: number, height: number) {
+const resize = async (filename: string, width: number, height: number): Promise<void> => {
+    const thumbPath = `./public/thumb/${filename}${width}x${height}`;
 
-    try {
-        const result = await sharp(filename).jpeg().resize(width, height);
-        return result;
-    } catch (error) {
-        console.log(error);
-    }
-   
+    // Original PNG asset
+    const pngAsset = await sharp(`assets/full/${filename}.png`);
+
+    // Converts PNG asset to JPEG and resizes image
+    const resizedJpeg = await pngAsset.jpeg().resize(width, height);
+
+    resizedJpeg.toFile(thumbPath);
+    
 }
+
 
 
 export default {

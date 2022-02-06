@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import { resolve } from "path/posix";
 import processor from "../utilities/processor";
 import fs from 'fs';
@@ -11,31 +11,28 @@ routes.get('/', (req, res) => {
   res.send('/')
 });
 
-// /api/images endpoint
-routes.get("/api/images/:id", async (req, res) => {
-  // Parameters to retrieve from URL in the form '?filename=[filename]&width=[width]&height=[height]'
+// Resizing endpoint
+routes.get("/api/images", async (req, res) => {
+  // Parameters to retrieve from URL in the form '?filename.[extension]=[filename]&width=[width]&height=[height]'
 
-  const filename = req.params.id;
+  const filename = String(req.query.filename);
   const width = Number(req.query.width);
   const height = Number(req.query.height);
-  const resizedImage = await sharp(`src/routes/api/images/${filename}.png`).jpeg().resize(width, height).toFile(`src/routes/api/output_files/${filename}.jpeg`);
 
-  if (width > 0 && height > 0){
-    fs.readFile(`src/routes/api/images/${filename}`, (data: any, error: any) => {
-      if (error) { throw error; }
-      
-      res.writeHead(200, {'Content-Type': 'image/jpeg'})
-      res.end(resizedImage);
-    })
-  }
-  
+  try {
+    await processor.resize(filename, width, height);
+    const thumb = `/thumb/${filename}${width}x${height}.jpg`;
 
+    
+    res.status(200).render("resizedImage", {
+        src: thumb
+    });
+    
 
+  } catch (error) {throw error;}
 
   //const resizedImage = await processor.resize(filename, width, height);
 
-
-  res.send(`/api/images`);
 
 });
 

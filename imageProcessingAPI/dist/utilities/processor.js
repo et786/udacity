@@ -4,32 +4,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sharp_1 = __importDefault(require("sharp"));
-// Determines if the given i
-// Determines if the given image file is of type JPG or PNG 
-/*
-function imageType(uri: string) {
-    const filePattern = /\.(jpg|png)/i;
-
-    if (filePattern.test(uri)){
-         if ((/\.jpg/i).test(uri)) {
-            return 'jpg';
-         } else if ((/\.png/i).test(uri)) {
-            return 'png';
-         }
-    } else {
-        return 'Unknown type';
-    }
-}*/
 // Retrieves image specified by name from public/assets/images
-async function resize(filename, width, height) {
-    try {
-        const result = await (0, sharp_1.default)(filename).jpeg().resize(width, height);
-        return result;
-    }
-    catch (error) {
-        console.log(error);
-    }
-}
+const resize = async (filename, width, height) => {
+    const thumbPath = `./public/thumb/${filename}${width}x${height}`;
+    // Original PNG asset
+    const pngAsset = await (0, sharp_1.default)(`assets/full/${filename}.png`);
+    // Converts PNG asset to JPEG and resizes image
+    const resizedJpeg = await pngAsset.jpeg().resize(width, height);
+    resizedJpeg.toFile(thumbPath);
+};
 exports.default = {
     resize
 };

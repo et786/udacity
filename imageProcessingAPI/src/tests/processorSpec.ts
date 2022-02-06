@@ -1,6 +1,5 @@
 import fs from 'fs';
 import processor from '../utilities/processor';
-
 /*
 describe("Validate file type of selected image", () => {
   const jpgImageURI = 'example.jpg';
@@ -24,16 +23,17 @@ describe("Validate file type of selected image", () => {
 
 });
 */
+/*
 
 describe("Resize image", () => {
   it("expect to have resized image written in output_files, according to specified filename, width and height params", async () => {
-    const filename = '1.png';
+    const filename = 'tcr.png';
     await processor.resize(filename, 150, 150);
-    expect(fs.existsSync(`src/routes/api/output_files/${filename}`)).toBeTruthy();
+    expect(fs.existsSync('src/routes/api/output_files/tcr.png')).toBeTruthy();
   });
 });
 
-
+*/
 
 
 
