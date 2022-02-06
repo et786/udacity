@@ -1,21 +1,23 @@
 import sharp, { OutputInfo } from "sharp";
-import fs from 'fs';
+import fs from "fs";
 
 // Retrieves PNG image specified by name from public/assets/images, and then converts it to a resized JPEG image
-const resize = async (filename: string, width: number, height: number): Promise<void> => {
-    const thumbPath = `./public/thumb/${filename}${width}x${height}.jpg`;
+const resize = async (
+  filename: string,
+  width: number,
+  height: number
+): Promise<void> => {
+  const thumbPath = `./public/thumb/${filename}${width}x${height}.jpg`;
 
-    // Original PNG asset
-    const pngAsset = await sharp(`assets/full/${filename}.png`);
+  // Original PNG asset
+  const pngAsset = await sharp(`assets/full/${filename}.png`);
 
-    // Converts PNG asset to JPEG and resizes image
-    const resizedJpeg = await pngAsset.jpeg().resize(width, height);
+  // Converts PNG asset to JPEG and resizes image
+  const resizedJpeg = await pngAsset.jpeg().resize(width, height);
 
-    resizedJpeg.toFile(thumbPath);
-
-}
-
+  resizedJpeg.toFile(thumbPath);
+};
 
 export default {
-    resize
+  resize
 };

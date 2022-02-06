@@ -1,14 +1,14 @@
 import express, { response } from "express";
 import { resolve } from "path/posix";
 import processor from "../utilities/processor";
-import fs from 'fs';
+import fs from "fs";
 import sharp from "sharp";
 
 const routes = express.Router();
 
 // Root endpoint
-routes.get('/', (req, res) => {
-  res.send('/')
+routes.get("/", (req, res) => {
+  res.send("/");
 });
 
 // Resizing endpoint
@@ -19,22 +19,19 @@ routes.get("/api/images/", async (req, res) => {
   const width = Number(req.query.width);
   const height = Number(req.query.height);
 
-  try {
-    await processor.resize(filename, width, height);
-    const thumb = `/thumb/${filename}${width}x${height}.jpg`;
+  if (width <= 0 || height <= 0) {
+    res.send("Width and height of resized image must be positive integers.");
+  } else {
+    try {
+      await processor.resize(filename, width, height);
+      const thumb = `/thumb/${filename}${width}x${height}.jpg`;
 
-    
-    res.status(200).render("resizedImage", {
-        src: thumb
-    });
-    
-
-  } catch (error) {throw error;}
-
+      res.status(200).render("resizedImage", { src: thumb });
+    } catch (error) {
+      throw error;
+    }
+  }
   //const resizedImage = await processor.resize(filename, width, height);
-
-
 });
-
 
 export default routes;

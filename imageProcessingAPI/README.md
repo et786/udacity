@@ -2,7 +2,11 @@
 Scripts for testing, starting, and building the app 
 ===================================================
 
+building: npm run build
 
+testing: npm run test
+
+starting: npm start 
 
 ===============================
 Endpoints to access for testing
@@ -15,3 +19,5 @@ Resized image: '/api/images/?filename=tcr&width=[positive integer]&hieght=[posit
 ========================
 Additional functionality
 ========================
+
+PNG images are converted into JPEG format.
