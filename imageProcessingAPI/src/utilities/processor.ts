@@ -15,6 +15,7 @@ const resize = async (
   // Converts PNG asset to JPEG and resizes image
   const resizedJpeg = await pngAsset.jpeg().resize(width, height);
 
+  // Create a new resized image thumbnail with specified width and height 
   resizedJpeg.toFile(thumbPath);
 };
 
