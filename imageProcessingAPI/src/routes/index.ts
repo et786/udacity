@@ -15,11 +15,6 @@ routes.get(
   "/api/images/",
   async (req: express.Request, res: express.Response): Promise<void> => {
     /*
-     * Reviewer: "You must check if the image resized with the same parameters exist
-     * and if it does, return that image as a response instead of resizing."
-     */
-
-    /*
      * Parameters to retrieve from URL in the form
      * '?filename.[extension]=[filename]&width=[width]&height=[height]'
      */
@@ -40,8 +35,9 @@ routes.get(
         /*
          * Uncomment the following console.log statement to confirm that that the thumbnail is actually being served:
          */
-
+        /*
         console.log(jpegThumb, " has been loaded");
+        */
         // Serve the stored thumbnail image specified by filename, width and height already if it already exists in thumb directory
         res.status(200).render("resizedImage", { src: jpegThumb });
       } else {
@@ -62,13 +58,14 @@ routes.get(
            * Uncomment the following console.log statement to confirm that
            * the pngAsset has been resized and converted into a JPEG thumbnail:
            */
-
+          /*
           console.log(
             "PNG image",
             pngAsset,
             "has been resized and converted into a JPEG image in ",
             jpegThumb
           );
+          */
           // Response passes resized image to view 'resizedImage.ejs'
           res.status(200).render("resizedImage", { src: jpegThumb });
         } catch (error) {

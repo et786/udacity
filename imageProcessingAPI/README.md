@@ -8,6 +8,9 @@ testing: npm run test
 
 starting: npm start 
 
+Note on testing: To further verify that caching feature works, you can uncomment the console.log statements
+which will print to the console after the given testing command is entered in the console.
+
 
 # Endpoints to access for testing
 
