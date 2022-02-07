@@ -10,7 +10,7 @@ routes.get("/", (req: express.Request, res: express.Response): void => {
   res.send("/");
 });
 
-// Resizing endpoint
+// Image display endpoint
 routes.get(
   "/api/images/",
   async (req: express.Request, res: express.Response): Promise<void> => {

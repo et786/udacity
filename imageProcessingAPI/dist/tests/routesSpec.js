@@ -15,7 +15,7 @@ describe("Endpoint testing", () => {
         const response = await request.get("/");
         expect(response.status).toBe(200);
     });
-    it("expect to get the entry endpoint '/api/images/' even without query parameters", async () => {
+    it("expect to get the entry endpoint '/api/images/' with status 404 when no query parameters are specified", async () => {
         const response = await request.get("/api/images/");
         expect(response.status).toBe(404); // Status is 404 because no query parameters are specified
     });
