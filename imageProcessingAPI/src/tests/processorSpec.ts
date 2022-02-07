@@ -4,7 +4,7 @@ import processor from "../utilities/processor";
 describe("Resized image", () => {
   it("expect to be found in ./public/thumb directory", async () => {
     const filename = "tcr";
-    const width = 200;
+    const width = 300;
     const height = 300;
     await processor.resize(filename, width, height);
     expect(

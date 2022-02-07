@@ -8,7 +8,7 @@ const processor_1 = __importDefault(require("../utilities/processor"));
 describe("Resized image", () => {
     it("expect to be found in ./public/thumb directory", async () => {
         const filename = "tcr";
-        const width = 200;
+        const width = 300;
         const height = 300;
         await processor_1.default.resize(filename, width, height);
         expect(fs_1.default.existsSync(`./public/thumb/${filename}${width}x${height}.jpg`)).toBeTruthy();

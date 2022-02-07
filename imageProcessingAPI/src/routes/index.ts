@@ -34,12 +34,15 @@ routes.get(
     const thumbExists = fs.existsSync(`public/${jpegThumb}`);
 
     if (thumbExists) {
+      // Check for already existing, matching JPEG thumbnail according to given filename, width and height
       if (width > 0 && height > 0) {
         // Both width and height must be positive integers
+        /*
+         * Uncomment the following console.log statement to confirm that that the thumbnail is actually being served:
+         */
 
-        // Confirm that the thumbnail is actually being served
         console.log(jpegThumb, " has been loaded");
-        // Serve the stored thumbnail imagespecified by filename, width and height already if it already exists in thumb directory
+        // Serve the stored thumbnail image specified by filename, width and height already if it already exists in thumb directory
         res.status(200).render("resizedImage", { src: jpegThumb });
       } else {
         res
@@ -47,6 +50,7 @@ routes.get(
           .send("Width and height of resized image must be positive integers.");
       }
     } else if (assetExists) {
+      // Check for matching pngAsset according to given filename, width and height
       if (width > 0 && height > 0) {
         // Both width and height must be positive integers
 
@@ -54,7 +58,11 @@ routes.get(
         try {
           // Wait for void Promise to resolve or reject
           await processor.resize(filename, width, height);
-          // Confirm that the pngAsset has been resized and converted into a JPEG thumbnail
+          /*
+           * Uncomment the following console.log statement to confirm that
+           * the pngAsset has been resized and converted into a JPEG thumbnail:
+           */
+
           console.log(
             "PNG image",
             pngAsset,
@@ -72,7 +80,11 @@ routes.get(
           .send("Width and height of resized image must be positive integers.");
       }
     } else {
-      res.status(404).send("File not found.");
+      res
+        .status(404)
+        .send(
+          "File not found. \nTo resize an image, specify the filename and desired height and width in the URL query parameters."
+        );
     }
   }
 );
