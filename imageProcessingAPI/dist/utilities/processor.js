@@ -11,6 +11,7 @@ const resize = async (filename, width, height) => {
     const pngAsset = await (0, sharp_1.default)(`assets/full/${filename}.png`);
     // Converts PNG asset to JPEG and resizes image
     const resizedJpeg = await pngAsset.jpeg().resize(width, height);
+    // Create a new resized image thumbnail with specified width and height 
     resizedJpeg.toFile(thumbPath);
 };
 exports.default = {

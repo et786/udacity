@@ -1,5 +1,4 @@
 import sharp, { OutputInfo } from "sharp";
-import fs from "fs";
 
 // Retrieves PNG image specified by name from public/assets/images, and then converts it to a resized JPEG image
 const resize = async (
@@ -22,3 +21,5 @@ const resize = async (
 export default {
   resize
 };
+
+// make sure functionality remains when deployed

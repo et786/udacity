@@ -16,7 +16,7 @@ routes.get("/", (req, res) => {
 routes.get("/api/images/", async (req, res) => {
     /*
      * Parameters to retrieve from URL in the form
-     * '?filename.[extension]=[filename]&width=[width]&height=[height]'
+     * '?filename=[filename]&width=[width]&height=[height]'
      */
     const filename = String(req.query.filename);
     const width = Number(req.query.width);
@@ -33,9 +33,7 @@ routes.get("/api/images/", async (req, res) => {
             /*
              * Uncomment the following console.log statement to confirm that that the thumbnail is actually being served:
              */
-            /*
             console.log(jpegThumb, " has been loaded");
-            */
             // Serve the stored thumbnail image specified by filename, width and height already if it already exists in thumb directory
             res.status(200).render("resizedImage", { src: jpegThumb });
         }
@@ -57,14 +55,7 @@ routes.get("/api/images/", async (req, res) => {
                  * Uncomment the following console.log statement to confirm that
                  * the pngAsset has been resized and converted into a JPEG thumbnail:
                  */
-                /*
-                console.log(
-                  "PNG image",
-                  pngAsset,
-                  "has been resized and converted into a JPEG image in ",
-                  jpegThumb
-                );
-                */
+                console.log("PNG image", pngAsset, "has been resized and converted into a JPEG image in ", jpegThumb);
                 // Response passes resized image to view 'resizedImage.ejs'
                 res.status(200).render("resizedImage", { src: jpegThumb });
             }

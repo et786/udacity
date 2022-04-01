@@ -16,7 +16,7 @@ routes.get(
   async (req: express.Request, res: express.Response): Promise<void> => {
     /*
      * Parameters to retrieve from URL in the form
-     * '?filename.[extension]=[filename]&width=[width]&height=[height]'
+     * '?filename=[filename]&width=[width]&height=[height]'
      */
     const filename = String(req.query.filename);
     const width = Number(req.query.width);
@@ -35,9 +35,9 @@ routes.get(
         /*
          * Uncomment the following console.log statement to confirm that that the thumbnail is actually being served:
          */
-        /*
+        
         console.log(jpegThumb, " has been loaded");
-        */
+        
         // Serve the stored thumbnail image specified by filename, width and height already if it already exists in thumb directory
         res.status(200).render("resizedImage", { src: jpegThumb });
       } else {
@@ -50,7 +50,7 @@ routes.get(
       if (width > 0 && height > 0) {
         // Both width and height must be positive integers
 
-        // Resize pngAsset according to specified query params 'height' and 'width' and convert it to PNG
+        // Resize pngAsset according to specified query params 'height' and 'width' and convert it to JPEG
         try {
           // Wait for void Promise to resolve or reject
           await processor.resize(filename, width, height);
@@ -58,14 +58,14 @@ routes.get(
            * Uncomment the following console.log statement to confirm that
            * the pngAsset has been resized and converted into a JPEG thumbnail:
            */
-          /*
+          
           console.log(
             "PNG image",
             pngAsset,
             "has been resized and converted into a JPEG image in ",
             jpegThumb
           );
-          */
+          
           // Response passes resized image to view 'resizedImage.ejs'
           res.status(200).render("resizedImage", { src: jpegThumb });
         } catch (error) {
